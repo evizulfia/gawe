@@ -60,13 +60,13 @@ jobs:
           rsync -avz --delete \
           -e "ssh -p 65002 -o StrictHostKeyChecking=no" \
           ./ \
-          u760825526@153.92.11.196:/path/to/your/project/
+          u760825526@153.92.11.196:/home/u760825526/public_html
 
       - name: Install dependencies on server
-        run: ssh -p 65002 u760825526@153.92.11.196 "cd /path/to/your/project && composer install --no-interaction --prefer-dist --optimize-autoloader"
+        run: ssh -p 65002 u760825526@153.92.11.196 "cd /home/u760825526/public_html && composer install --no-interaction --prefer-dist --optimize-autoloader"
 
       - name: Run migrations on server
-        run: ssh -p 65002 u760825526@153.92.11.196 "cd /path/to/your/project && php artisan migrate --force"
+        run: ssh -p 65002 u760825526@153.92.11.196 "cd /home/u760825526/public_html && php artisan migrate --force"
 
       - name: Restart server
-        run: ssh -p 65002 u760825526@153.92.11.196 "cd /path/to/your/project && pm2 restart all" # Contoh menggunakan PM2, sesuaikan dengan kebutuhanmu
+        run: ssh -p 65002 u760825526@153.92.11.196 "cd /home/u760825526/public_html && pm2 restart all"
