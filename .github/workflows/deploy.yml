@@ -1,0 +1,72 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - "**" # Menjalankan workflow pada setiap push ke semua branch
+  pull_request:
+    branches:
+      - "**" # Menjalankan workflow pada setiap pull request ke semua branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.0" # Sesuaikan dengan versi PHP yang dibutuhkan oleh Laravel 9
+          extensions: mbstring, exif, pcntl, bcmath, gd
+          coverage: none
+
+      - name: Set up Composer
+        run: sudo apt-get update && sudo apt-get install -y unzip
+
+      - name: Install Composer
+        run: |
+          curl -sS https://getcomposer.org/installer | php
+          sudo mv composer.phar /usr/local/bin/composer
+
+      - name: Install dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
+
+      - name: Copy .env file
+        run: cp .env.example .env
+
+      - name: Generate application key
+        run: php artisan key:generate
+
+      - name: Migrate database
+        run: php artisan migrate --force
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add known hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+
+      - name: Sync files to server
+        run: |
+          rsync -avz --delete \
+          -e "ssh -p 65002 -o StrictHostKeyChecking=no" \
+          ./ \
+          u760825526@153.92.11.196:/path/to/your/project/
+
+      - name: Install dependencies on server
+        run: ssh -p 65002 u760825526@153.92.11.196 "cd /path/to/your/project && composer install --no-interaction --prefer-dist --optimize-autoloader"
+
+      - name: Run migrations on server
+        run: ssh -p 65002 u760825526@153.92.11.196 "cd /path/to/your/project && php artisan migrate --force"
+
+      - name: Restart server
+        run: ssh -p 65002 u760825526@153.92.11.196 "cd /path/to/your/project && pm2 restart all" # Contoh menggunakan PM2, sesuaikan dengan kebutuhanmu
