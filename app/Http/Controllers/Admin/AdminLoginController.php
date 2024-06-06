@@ -12,6 +12,8 @@ class AdminLoginController extends Controller
 {
     public function index()
     {
+        $pass = Hash::make('123');
+        dd($pass);
         return view('admin.login');
     }
 
