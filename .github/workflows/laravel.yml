@@ -12,11 +12,24 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2.3.2
-    # Add your CI steps here, e.g., running tests, linting, etc.
+    
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0' # Adjust the PHP version as needed
+    
+    - name: Install dependencies
+      run: composer install
+
     - name: Run tests
-      run: |
-        echo "Running tests..."
-        # Add your test commands here
+      run: php artisan test # Adjust this command to run your tests
+      env:
+        APP_ENV: testing
+        DB_CONNECTION: sqlite
+        DB_DATABASE: ':memory:'
+        CACHE_DRIVER: array
+        SESSION_DRIVER: array
+        QUEUE_CONNECTION: sync
 
   deploy:
     name: 🚀 Deploy website on push
