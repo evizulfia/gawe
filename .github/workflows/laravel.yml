@@ -11,7 +11,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: gaweapp.site
+        server: 153.92.11.196
         username: u760825526
         password: ALiebi567SSHDEV.
         server-dir: /public_html/gawe/
