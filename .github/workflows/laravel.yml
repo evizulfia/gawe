@@ -1,9 +1,28 @@
-on: push
-name: 🚀 Deploy website on push
+name: CI and Deployment
+
+on:
+  push:
+    branches:
+      - '**'
+
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  ci:
+    name: 🛠️ Run CI
     runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2.3.2
+    # Add your CI steps here, e.g., running tests, linting, etc.
+    - name: Run tests
+      run: |
+        echo "Running tests..."
+        # Add your test commands here
+
+  deploy:
+    name: 🚀 Deploy website on push
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: ci
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2.3.2
