@@ -14,4 +14,4 @@ jobs:
         server: ftp://gaweapp.site
         username: mu760825526
         password: ALiebi567SSHDEV.
-        server-dir: /public_html/gawe
+        server-dir: /public_html/gawe/
