@@ -55,7 +55,6 @@ class AdminLoginController extends Controller
             'password' => 'required'
         ]);
 
-
         $credential = [
             'email' => $request->email,
             'password' => $request->password
@@ -72,5 +71,33 @@ class AdminLoginController extends Controller
     {
         Auth::guard('admin')->logout();
         return redirect()->route('admin_login');
+    }
+
+    public function reset_password($token,$email)
+    {
+        $admin_data = Admin::where('token',$token)->where('email',$email)->first();
+        if(!$admin_data) {
+            return redirect()->route('admin_login');
+        }
+
+        return view('admin.reset_password', compact('token','email'));
+
+    }
+
+    public function reset_password_submit(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+            'retype_password' => 'required|same:password'
+        ]);
+
+        $admin_data = Admin::where('token',$request->token)->where('email',$request->email)->first();
+
+        $admin_data->password = Hash::make($request->password);
+        $admin_data->token = '';
+        $admin_data->update();
+
+        return redirect()->route('admin_login')->with('success', 'Password is reset successfully');
+
     }
 }
