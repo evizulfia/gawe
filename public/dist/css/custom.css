@@ -406,3 +406,23 @@ hr.invoice-above-table {
 .tox .tox-notification {
     display: none !important;
 }
+
+
+.form-control.is-invalid, 
+.was-validated .form-control:invalid {
+    border-color: #dc3545!important;
+}
+
+.btn-block {
+    width: 100%!important;
+}
+.w-100-p {
+    width: 100%;
+}
+.rounded-circle-custom {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 4px;
+}
