@@ -62,9 +62,15 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
+      - name: Debug SSH connection
+        run: |
+          echo "Attempting SSH connection..."
+          ssh -vvv -o StrictHostKeyChecking=no u760825526@153.92.11.196 'echo "SSH connection successful"'
+        continue-on-error: true
+
       - name: Set permissions, update .env, and install dependencies on server
         run: |
-          ssh -o StrictHostKeyChecking=no u760825526@153.92.11.196 << 'EOF'
+          ssh -o StrictHostKeyChecking=no -t u760825526@153.92.11.196 << 'EOF'
             cd /public_html/web
             echo "APP_NAME=Laravel" > .env
             echo "APP_ENV=production" >> .env
