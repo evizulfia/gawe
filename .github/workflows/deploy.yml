@@ -72,7 +72,7 @@ jobs:
       - name: Set permissions, update .env, and install dependencies on server
         run: |
           ssh -o StrictHostKeyChecking=no -p 65002 -t u760825526@153.92.11.196 << 'EOF'
-            cd /public_html/web
+          cd /home/u760825526/public_html/web/
             echo "APP_NAME=Laravel" > .env
             echo "APP_ENV=production" >> .env
             echo "APP_KEY=base64:eLoe1feH0qRFd0NmUWkQnNvBAfXzef3p3v5eeHcreHg=" >> .env
