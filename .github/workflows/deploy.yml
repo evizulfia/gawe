@@ -10,7 +10,7 @@ jobs:
     name: 🛠️ Run CI
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
+      - name: Get latest code
         uses: actions/checkout@v2.3.2
 
       - name: Set up PHP
@@ -32,15 +32,15 @@ jobs:
           QUEUE_CONNECTION: sync
 
   deploy:
-    name: 🚀 Deploy website on push
+    name: Deploy website on push
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     needs: ci
     steps:
-      - name: 🚚 Get latest code
+      - name: Get latest code
         uses: actions/checkout@v2.3.2
 
-      - name: 📂 Sync files
+      - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: 153.92.11.196
@@ -56,7 +56,11 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+      - name: Add known hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
       - name: Set permissions, update .env, and install dependencies on server
         run: |
