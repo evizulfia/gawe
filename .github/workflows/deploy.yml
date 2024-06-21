@@ -45,6 +45,7 @@ jobs:
         with:
           server: 153.92.11.196
           username: u760825526
+          port: 65002
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/web/
           exclude: |
