@@ -45,5 +45,29 @@ jobs:
         with:
           server: 153.92.11.196
           username: u760825526
-          password: ASDw123.
+          password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/web/
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1" # Adjust the PHP version as needed
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Copy .env
+        run: cp .env.example .env
+
+      - name: Generate application key
+        run: php artisan key:generate
+
+      - name: Run migrations
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: php artisan migrate
