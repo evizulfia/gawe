@@ -21,7 +21,7 @@ class CreatePageHomeItemsTable extends Migration
             $table->text('job_category');
             $table->text('job_location');
             $table->text('search');
-            $table->text('background');
+            $table->text('backgroud');
             $table->timestamps();
         });
     }
