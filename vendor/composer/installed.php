@@ -1,15 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-<<<<<<< HEAD
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
-=======
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '5ca9f88f1ee4464afc0978f45c694fb3728f65d9',
->>>>>>> master
+        'reference' => 'a489d82d3215c947df3ed1d4d008713da6313fc1',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -410,15 +404,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-<<<<<<< HEAD
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
-=======
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '5ca9f88f1ee4464afc0978f45c694fb3728f65d9',
->>>>>>> master
+            'reference' => 'a489d82d3215c947df3ed1d4d008713da6313fc1',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -521,15 +509,9 @@
             ),
         ),
         'myclabs/deep-copy' => array(
-<<<<<<< HEAD
-            'pretty_version' => '1.11.1',
-            'version' => '1.11.1.0',
-            'reference' => '7284c22080590fb39f2ffa3e9057f10a4ddd0e0c',
-=======
             'pretty_version' => '1.12.0',
             'version' => '1.12.0.0',
             'reference' => '3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../myclabs/deep-copy',
             'aliases' => array(),
@@ -792,15 +774,9 @@
             ),
         ),
         'psy/psysh' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v0.12.3',
-            'version' => '0.12.3.0',
-            'reference' => 'b6b6cce7d3ee8fbf31843edce5e8f5a72eff4a73',
-=======
             'pretty_version' => 'v0.12.4',
             'version' => '0.12.4.0',
             'reference' => '2fd717afa05341b4f8152547f142cd2f130f6818',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(),
@@ -1089,135 +1065,81 @@
             'dev_requirement' => false,
         ),
         'symfony/polyfill-ctype' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => 'ef4d7e442ca910c4764bce785146269b30cb5fc4',
-=======
             'pretty_version' => 'v1.30.0',
             'version' => '1.30.0.0',
             'reference' => '0424dff1c58f028c451efff2045f5d92410bd540',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-iconv' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => 'cd4226d140ecd3d0f13d32ed0a4a095ffe871d2f',
-=======
             'pretty_version' => 'v1.30.0',
             'version' => '1.30.0.0',
             'reference' => 'c027e6a3c6aee334663ec21f5852e89738abc805',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-iconv',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-intl-grapheme' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => '32a9da87d7b3245e09ac426c83d334ae9f06f80f',
-=======
             'pretty_version' => 'v1.30.0',
             'version' => '1.30.0.0',
             'reference' => '64647a7c30b2283f5d49b874d84a18fc22054b7a',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-grapheme',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-intl-idn' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => 'a287ed7475f85bf6f61890146edbc932c0fff919',
-=======
             'pretty_version' => 'v1.30.0',
             'version' => '1.30.0.0',
             'reference' => 'a6e83bdeb3c84391d1dfe16f42e40727ce524a5c',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-idn',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-intl-normalizer' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => 'bc45c394692b948b4d383a08d7753968bed9a83d',
-=======
             'pretty_version' => 'v1.30.0',
             'version' => '1.30.0.0',
             'reference' => 'a95281b0be0d9ab48050ebd988b967875cdb9fdb',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-normalizer',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-mbstring' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => '9773676c8a1bb1f8d4340a62efe641cf76eda7ec',
-=======
             'pretty_version' => 'v1.30.0',
             'version' => '1.30.0.0',
             'reference' => 'fd22ab50000ef01661e2a31d850ebaa297f8e03c',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-php72' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => '861391a8da9a04cbad2d232ddd9e4893220d6e25',
-=======
             'pretty_version' => 'v1.30.0',
             'version' => '1.30.0.0',
             'reference' => '10112722600777e02d2745716b70c5db4ca70442',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php72',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-php73' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => '21bd091060673a1177ae842c0ef8fe30893114d2',
-=======
             'pretty_version' => 'v1.30.0',
             'version' => '1.30.0.0',
             'reference' => 'ec444d3f3f6505bb28d11afa41e75faadebc10a1',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php73',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-php80' => array(
-<<<<<<< HEAD
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => '87b68208d5c1188808dd7839ee1e6c8ec3b02f1b',
-=======
             'pretty_version' => 'v1.30.0',
             'version' => '1.30.0.0',
             'reference' => '77fa7995ac1b21ab60769b7323d600a991a90433',
->>>>>>> master
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php80',
             'aliases' => array(),

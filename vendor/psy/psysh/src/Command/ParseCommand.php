@@ -90,15 +90,9 @@ class ParseCommand extends Command implements ContextAware, PresenterAware
         $this
             ->setName('parse')
             ->setDefinition([
-<<<<<<< HEAD
-            new CodeArgument('code', CodeArgument::REQUIRED, 'PHP code to parse.'),
-            new InputOption('depth', '', InputOption::VALUE_REQUIRED, 'Depth to parse.', 10),
-        ])
-=======
                 new CodeArgument('code', CodeArgument::REQUIRED, 'PHP code to parse.'),
                 new InputOption('depth', '', InputOption::VALUE_REQUIRED, 'Depth to parse.', 10),
             ])
->>>>>>> master
             ->setDescription('Parse PHP code and show the abstract syntax tree.')
             ->setHelp(
                 <<<'HELP'
@@ -120,10 +114,6 @@ HELP
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $code = $input->getArgument('code');
-<<<<<<< HEAD
-        $parserKind = $input->getOption('kind');
-=======
->>>>>>> master
         $depth = $input->getOption('depth');
 
         $nodes = $this->parser->parse($code);

@@ -310,14 +310,11 @@ class Configuration
                     return self::VERBOSITY_VERY_VERBOSE;
                 case '3':
                 case 'vv': // `-vvv`
-<<<<<<< HEAD
-=======
                 case 'vvv':
                 case 'vvvv':
                 case 'vvvvv':
                 case 'vvvvvv':
                 case 'vvvvvvv':
->>>>>>> master
                     return self::VERBOSITY_DEBUG;
                 default: // implicitly normal, config file default wins
                     return;

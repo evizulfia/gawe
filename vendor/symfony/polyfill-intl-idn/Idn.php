@@ -280,13 +280,6 @@ final class Idn
 
             switch ($data['status']) {
                 case 'disallowed':
-<<<<<<< HEAD
-                    $info->errors |= self::ERROR_DISALLOWED;
-
-                    // no break.
-
-=======
->>>>>>> master
                 case 'valid':
                     $str .= mb_chr($codePoint, 'utf-8');
 
@@ -297,11 +290,7 @@ final class Idn
                     break;
 
                 case 'mapped':
-<<<<<<< HEAD
-                    $str .= $data['mapping'];
-=======
                     $str .= $transitional && 0x1E9E === $codePoint ? 'ss' : $data['mapping'];
->>>>>>> master
 
                     break;
 
@@ -353,8 +342,6 @@ final class Idn
             $validationOptions = $options;
 
             if ('xn--' === substr($label, 0, 4)) {
-<<<<<<< HEAD
-=======
                 // Step 4.1. If the label contains any non-ASCII code point (i.e., a code point greater than U+007F),
                 // record that there was an error, and continue with the next label.
                 if (preg_match('/[^\x00-\x7F]/', $label)) {
@@ -367,7 +354,6 @@ final class Idn
                 // that conversion fails, record that there was an error, and continue
                 // with the next label. Otherwise replace the original label in the string by the results of the
                 // conversion.
->>>>>>> master
                 try {
                     $label = self::punycodeDecode(substr($label, 4));
                 } catch (\Exception $e) {
@@ -538,11 +524,8 @@ final class Idn
             if ('-' === substr($label, -1, 1)) {
                 $info->errors |= self::ERROR_TRAILING_HYPHEN;
             }
-<<<<<<< HEAD
-=======
         } elseif ('xn--' === substr($label, 0, 4)) {
             $info->errors |= self::ERROR_PUNYCODE;
->>>>>>> master
         }
 
         // Step 4. The label must not contain a U+002E (.) FULL STOP.

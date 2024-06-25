@@ -224,14 +224,11 @@ class DeepCopy
             return;
         }
 
-<<<<<<< HEAD
-=======
         // Ignore readonly properties
         if (method_exists($property, 'isReadOnly') && $property->isReadOnly()) {
             return;
         }
 
->>>>>>> master
         // Apply the filters
         foreach ($this->filters as $item) {
             /** @var Matcher $matcher */
