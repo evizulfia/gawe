@@ -58,7 +58,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-port: 65002 # Menggunakan port 65002 untuk koneksi SSH
+          ssh-port: 65002
 
       - name: Add known hosts
         run: |
