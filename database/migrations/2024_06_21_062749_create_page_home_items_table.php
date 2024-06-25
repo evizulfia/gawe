@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePageHomeItemsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -22,6 +22,9 @@ class CreatePageHomeItemsTable extends Migration
             $table->text('job_location');
             $table->text('search');
             $table->text('background');
+            $table->text('job_category_heading');
+            $table->text('job_category_subheading')->nullable();
+            $table->text('job_category_status');
             $table->timestamps();
         });
     }
@@ -35,4 +38,4 @@ class CreatePageHomeItemsTable extends Migration
     {
         Schema::dropIfExists('page_home_items');
     }
-}
+};
