@@ -47,7 +47,7 @@ jobs:
           username: u760825526
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/web/
-          local-dir: /tmp/deploy/
+          #local-dir: /tmp/deploy/
 
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
