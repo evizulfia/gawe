@@ -89,5 +89,5 @@ jobs:
           chmod -R 775 storage bootstrap/cache
           chown -R u760825526:o1005330680 .
           composer install --no-dev --prefer-dist --optimize-autoloader
-          php artisan migrate:fresh --force
+          php artisan migrate --force
           EOF
