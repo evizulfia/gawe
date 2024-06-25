@@ -10,7 +10,7 @@
     <div class="main-nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="{{ asset('uploads/logo.png') }}" alt="" />
                 </a>
                 <div
@@ -19,7 +19,7 @@
                 >
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a href="index.html" class="nav-link"
+                            <a href="{{ route('home') }}" class="nav-link"
                                 >Home</a
                             >
                         </li>
