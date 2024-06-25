@@ -18,6 +18,9 @@ jobs:
         with:
           php-version: "8.1"
 
+      - name: Check PHP version
+        run: php -v
+
       - name: Install dependencies
         run: composer install
 
