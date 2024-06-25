@@ -73,7 +73,6 @@ class WebsiteController extends Controller
         \Mail::to($request->email)->send(new Websitemail($subject,$message));
 
         echo 'Email is sent';
-
     }
 
     public function registration_verify($token,$email)

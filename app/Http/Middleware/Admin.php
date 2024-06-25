@@ -4,12 +4,6 @@ namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-<<<<<<< HEAD
-=======
-use Closure;
-use Illuminate\Http\Request;
-
->>>>>>> master
 class Admin extends Middleware
 {
     protected function redirectTo($request)
@@ -18,8 +12,4 @@ class Admin extends Middleware
             return route('admin_login');
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
