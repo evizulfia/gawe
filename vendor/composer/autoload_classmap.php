@@ -8,16 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
-<<<<<<< HEAD
-    'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
-    'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
-=======
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\WebsiteController' => $baseDir . '/app/Http/Controllers/WebsiteController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Admin' => $baseDir . '/app/Http/Middleware/Admin.php',
->>>>>>> GAWE-2-laravel-auth-single-multi-users
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => $baseDir . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
@@ -26,11 +21,8 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
-<<<<<<< HEAD
-=======
     'App\\Mail\\Websitemail' => $baseDir . '/app/Mail/Websitemail.php',
     'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
->>>>>>> GAWE-2-laravel-auth-single-multi-users
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
@@ -4275,11 +4267,13 @@ return array(
     'Symfony\\Component\\CssSelector\\Node\\ElementNode' => $vendorDir . '/symfony/css-selector/Node/ElementNode.php',
     'Symfony\\Component\\CssSelector\\Node\\FunctionNode' => $vendorDir . '/symfony/css-selector/Node/FunctionNode.php',
     'Symfony\\Component\\CssSelector\\Node\\HashNode' => $vendorDir . '/symfony/css-selector/Node/HashNode.php',
+    'Symfony\\Component\\CssSelector\\Node\\MatchingNode' => $vendorDir . '/symfony/css-selector/Node/MatchingNode.php',
     'Symfony\\Component\\CssSelector\\Node\\NegationNode' => $vendorDir . '/symfony/css-selector/Node/NegationNode.php',
     'Symfony\\Component\\CssSelector\\Node\\NodeInterface' => $vendorDir . '/symfony/css-selector/Node/NodeInterface.php',
     'Symfony\\Component\\CssSelector\\Node\\PseudoNode' => $vendorDir . '/symfony/css-selector/Node/PseudoNode.php',
     'Symfony\\Component\\CssSelector\\Node\\SelectorNode' => $vendorDir . '/symfony/css-selector/Node/SelectorNode.php',
     'Symfony\\Component\\CssSelector\\Node\\Specificity' => $vendorDir . '/symfony/css-selector/Node/Specificity.php',
+    'Symfony\\Component\\CssSelector\\Node\\SpecificityAdjustmentNode' => $vendorDir . '/symfony/css-selector/Node/SpecificityAdjustmentNode.php',
     'Symfony\\Component\\CssSelector\\Parser\\Handler\\CommentHandler' => $vendorDir . '/symfony/css-selector/Parser/Handler/CommentHandler.php',
     'Symfony\\Component\\CssSelector\\Parser\\Handler\\HandlerInterface' => $vendorDir . '/symfony/css-selector/Parser/Handler/HandlerInterface.php',
     'Symfony\\Component\\CssSelector\\Parser\\Handler\\HashHandler' => $vendorDir . '/symfony/css-selector/Parser/Handler/HashHandler.php',
