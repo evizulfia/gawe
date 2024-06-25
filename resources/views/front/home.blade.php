@@ -8,37 +8,37 @@
         />
 
         <meta name="description" content="" />
-        <title>Job Hunt</title>
+        <title>Gawe App</title>
 
-        <link rel="icon" type="image/png" href="uploads/favicon.png" />
+        <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}" />
 
         <!-- All CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/bootstrap-datepicker.min.css" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/bootstrap-datepicker.min.css') }}" />
         <!--<link rel="stylesheet" href="css/jquery-ui.css" />-->
-        <link rel="stylesheet" href="css/animate.min.css" />
-        <link rel="stylesheet" href="css/magnific-popup.css" />
-        <link rel="stylesheet" href="css/owl.carousel.min.css" />
-        <link rel="stylesheet" href="css/select2.min.css" />
-        <link rel="stylesheet" href="css/select2-bootstrap.min.css" />
-        <link rel="stylesheet" href="css/all.css" />
-        <link rel="stylesheet" href="css/meanmenu.css" />
-        <link rel="stylesheet" href="css/spacing.css" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/animate.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/magnific-popup.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/owl.carousel.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/select2.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/select2-bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/all.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/meanmenu.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/spacing.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist-front/css/style.css') }}" />
 
         <!-- All Javascripts -->
-        <script src="js/jquery-3.6.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-datepicker.min.js"></script>
+        <script src="{{ asset('dist-front/js/jquery-3.6.1.min.js') }}"></script>
+        <script src="{{ asset('dist-front/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('dist-front/js/bootstrap-datepicker.min.js') }}"></script>
         <!--<script src="js/jquery-ui.js"></script>-->
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/wow.min.js"></script>
-        <script src="js/select2.full.js"></script>
-        <script src="js/jquery.waypoints.min.js"></script>
-        <script src="js/moment.min.js"></script>
-        <script src="js/jquery.meanmenu.js"></script>
-        <script src="tinymce/tinymce.min.js"></script>
+        <script src="{{ asset('dist-front/js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('dist-front/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('dist-front/js/wow.min.js') }}"></script>
+        <script src="{{ asset('dist-front/js/select2.full.js') }}"></script>
+        <script src="{{ asset('dist-front/js/jquery.waypoints.min.js') }}"></script>
+        <script src="{{ asset('dist-front/js/moment.min.js') }}"></script>
+        <script src="{{ asset('dist-front/js/jquery.meanmenu.js') }}"></script>
+        <script src="{{ asset('dist-front/tinymce/tinymce.min.js') }}"></script>
 
         <link
             href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
@@ -51,8 +51,8 @@
                 <div class="row">
                     <div class="col-md-6 left-side">
                         <ul>
-                            <li class="phone-text">111-222-3333</li>
-                            <li class="email-text">contact@arefindev.com</li>
+                            <li class="phone-text">0274-1234567</li>
+                            <li class="email-text">mail@gaweapp.site</li>
                         </ul>
                     </div>
                     <div class="col-md-6 right-side">
@@ -77,7 +77,7 @@
             <!-- Menu For Mobile Device -->
             <div class="mobile-nav">
                 <a href="index.html" class="logo">
-                    <img src="uploads/logo.png" alt="" />
+                    <img src="{{ asset('uploads/logo.png') }}" alt="" />
                 </a>
             </div>
 
@@ -86,7 +86,7 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="index.html">
-                            <img src="uploads/logo.png" alt="" />
+                            <img src="{{ asset('uploads/logo.png') }}" alt="" />
                         </a>
                         <div
                             class="collapse navbar-collapse mean-menu"
@@ -133,7 +133,7 @@
             </div>
         </div>
 
-        <div class="slider" style="background-image: url(uploads/banner5.jpg)">
+        <div class="slider" style="background-image: url({{ asset('uploads/banner5.jpg)') }}">
             <div class="bg"></div>
             <div class="container">
                 <div class="row">
@@ -174,7 +174,7 @@
                                                             Australia
                                                         </option>
                                                         <option value="">
-                                                            Bangladesh
+                                                            Indonesia
                                                         </option>
                                                         <option value="">
                                                             Canada
@@ -183,7 +183,7 @@
                                                             China
                                                         </option>
                                                         <option value="">
-                                                            India
+                                                            Singapore
                                                         </option>
                                                         <option value="">
                                                             United Kingdom
@@ -382,7 +382,7 @@
 
         <div
             class="why-choose"
-            style="background-image: url(uploads/banner3.jpg)"
+            style="background-image: url({{ asset('uploads/banner3.jpg)') }}"
         >
             <div class="container">
                 <div class="row">
@@ -460,19 +460,19 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="item d-flex justify-content-start">
                             <div class="logo">
-                                <img src="uploads/logo1.png" alt="" />
+                                <img src="{{ asset('uploads/logo1.png') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h3>
                                     <a href="job.html"
-                                        >Software Engineer, Google</a
+                                        >Software Engineer, Google Indonesia</a
                                     >
                                 </h3>
                                 <div
                                     class="detail-1 d-flex justify-content-start"
                                 >
                                     <div class="category">Web Development</div>
-                                    <div class="location">United States</div>
+                                    <div class="location">Indonesia</div>
                                 </div>
                                 <div
                                     class="detail-2 d-flex justify-content-start"
@@ -499,7 +499,7 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="item d-flex justify-content-start">
                             <div class="logo">
-                                <img src="uploads/logo2.png" alt="" />
+                                <img src="{{ asset('uploads/logo2.png') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h3>
@@ -534,7 +534,7 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="item d-flex justify-content-start">
                             <div class="logo">
-                                <img src="uploads/logo3.png" alt="" />
+                                <img src="{{ asset('uploads/logo3.png') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h3>
@@ -572,7 +572,7 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="item d-flex justify-content-start">
                             <div class="logo">
-                                <img src="uploads/logo4.png" alt="" />
+                                <img src="{{ asset('uploads/logo4.png') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h3>
@@ -610,7 +610,7 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="item d-flex justify-content-start">
                             <div class="logo">
-                                <img src="uploads/logo5.png" alt="" />
+                                <img src="{{ asset('uploads/logo5.png') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h3>
@@ -648,7 +648,7 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="item d-flex justify-content-start">
                             <div class="logo">
-                                <img src="uploads/logo6.png" alt="" />
+                                <img src="{{ asset('uploads/logo6.png') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h3>
@@ -698,7 +698,7 @@
 
         <div
             class="testimonial"
-            style="background-image: url(uploads/banner11.jpg)"
+            style="background-image: url({{ asset('uploads/banner11') }}.jpg)"
         >
             <div class="bg"></div>
             <div class="container">
@@ -712,7 +712,7 @@
                         <div class="testimonial-carousel owl-carousel">
                             <div class="item">
                                 <div class="photo">
-                                    <img src="uploads/t1.jpg" alt="" />
+                                    <img src="{{ asset('uploads/t1.jpg') }}" alt="" />
                                 </div>
                                 <div class="text">
                                     <h4>Robert Krol</h4>
@@ -732,7 +732,7 @@
                             </div>
                             <div class="item">
                                 <div class="photo">
-                                    <img src="uploads/t2.jpg" alt="" />
+                                    <img src="{{ asset('uploads/t2.jpg') }}" alt="" />
                                 </div>
                                 <div class="text">
                                     <h4>Sal Harvey</h4>
@@ -772,7 +772,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="item">
                             <div class="photo">
-                                <img src="uploads/banner1.jpg" alt="" />
+                                <img src="{{ asset('uploads/banner1.jpg') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h2>
@@ -799,7 +799,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="item">
                             <div class="photo">
-                                <img src="uploads/banner2.jpg" alt="" />
+                                <img src="{{ asset('uploads/banner2.jpg') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h2>
@@ -826,7 +826,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="item">
                             <div class="photo">
-                                <img src="uploads/banner3.jpg" alt="" />
+                                <img src="{{ asset('uploads/banner3.jpg') }}" alt="" />
                             </div>
                             <div class="text">
                                 <h2>
@@ -888,20 +888,20 @@
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div class="right">
-                                    34 Antiger Lane, USA, 12937
+                                    Jl. Ringroad Utara, Depok, Sleman 12345
                                 </div>
                             </div>
                             <div class="list-item">
                                 <div class="left">
                                     <i class="fas fa-phone"></i>
                                 </div>
-                                <div class="right">contact@arefindev.com</div>
+                                <div class="right">mail@gaweapp.site</div>
                             </div>
                             <div class="list-item">
                                 <div class="left">
                                     <i class="fas fa-envelope"></i>
                                 </div>
-                                <div class="right">122-222-1212</div>
+                                <div class="right">0274-1234567</div>
                             </div>
                             <ul class="social">
                                 <li>
@@ -967,7 +967,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="copyright">
-                            Copyright 2022, ArefinDev. All Rights Reserved.
+                            Copyright 2024, GAWE. All Rights Reserved.
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -988,6 +988,6 @@
             <i class="fas fa-angle-up"></i>
         </div>
 
-        <script src="js/custom.js"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
     </body>
 </html>
