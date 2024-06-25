@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,6 @@
     @include('admin.layout.styles')
 
     @include('admin.layout.scripts')
-
 </head>
 
 <body>
@@ -26,42 +24,31 @@
                     <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                         <div class="card card-primary border-box">
                             <div class="card-header card-header-auth">
-                                <h4 class="text-center">Admin Panel Login</h4>
+                                <h4 class="text-center">Reset Password</h4>
                             </div>
                             <div class="card-body card-body-auth">
-
-                                @if(session()->get('success'))
-                                    <div class="text-success">{{ session()->get('success') }}</div>
-                                @endif
-
-                                <form method="POST" action="{{ route('admin_login_submit') }}">
+                                <form method="POST" action="{{ route('admin_reset_password_submit') }}">
                                     @csrf
+
+                                    <input type="hidden" name="token" value="{{ $token }}">
+                                    <input type="hidden" name="email" value="{{ $email }}">
+
                                     <div class="form-group">
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Address" value="{{ old('email') }}" autofocus>
-                                        @error('email')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                        @if(session()->get('error'))
-                                            <div class="text-danger">{{ session()->get('error') }}</div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" autofocus>
                                         @error('password')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                            Login
-                                        </button>
+                                        <input type="password" class="form-control @error('retype_password') is-invalid @enderror" name="retype_password" placeholder="Retype Password">
+                                        @error('retype_password')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <div>
-                                            <a href="{{ route('admin_forget_password') }}">
-                                                Forget Password?
-                                            </a>
-                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                            Update
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -77,23 +64,3 @@
 
 </body>
 </html>
-=======
-<h3>Admin Login</h3>
-
-<form action="{{ route('admin_login_submit') }}" method="post">
-    @csrf
-    <div>Email Address</div>
-    <div>
-        <input type="text" name="email">
-    </div>
-
-    <div>Password</div>
-    <div>
-        <input type="password" name="password">
-    </div>
-
-    <div style="margin-top:10px;">
-        <input type="submit" value="Login">
-    </div>
-</form>
->>>>>>> master
