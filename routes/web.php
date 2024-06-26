@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminJobCategoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -51,6 +52,7 @@ Route::middleware('admin:admin')->group(function (){
     Route::get('/admin/edit-profile', [AdminProfileController::class, 'index'])->name('admin_profile');
     Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profile_submit'])->name('admin_profile_submit');
     Route::post('/admin/home-page/update', [AdminHomePageController::class, 'update'])->name('admin_home_page_update');
+    Route::get('/admin/job-category', [AdminJobCategoryController::class, 'index'])->name('admin_job_category');
 });
 
 
