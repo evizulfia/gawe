@@ -10,8 +10,8 @@ class HomeController extends Controller
 {
     public function index() {
 
-        $home_page_data = PageHomeItem::where('id',1)->first();
-        
+        // $home_page_data = PageHomeItem::where('id',1)->first();
+
         return view('front.home');
     }
 }
