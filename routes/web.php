@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\FaqController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -19,7 +20,7 @@ Route::get('/terms', [TermsController::class, 'index'])->name('terms');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit');
-
+Route::get('faq', [FaqController::class, 'index'])->name('faq');
 
 Route::get('/dashboard', [WebsiteController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 
