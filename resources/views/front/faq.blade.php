@@ -1,7 +1,7 @@
 @extends('front.layout.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_faq) }}')">
+<div class="page-top" style="background-image: url('{{ asset('uploads/'banner_faq') }}')">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
