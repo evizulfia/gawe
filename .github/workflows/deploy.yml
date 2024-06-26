@@ -78,7 +78,7 @@ jobs:
         run: |
           echo "Attempting SSH connection..."
           ssh -vvv -o StrictHostKeyChecking=no -p 65002 u760825526@153.92.11.196 'echo "SSH connection successful"'
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Set permissions and install dependencies on server
         run: |
