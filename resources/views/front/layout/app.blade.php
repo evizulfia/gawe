@@ -34,7 +34,7 @@
                     <div class="col-md-6 right-side">
                         <ul class="right">
                             <li class="menu">
-                                <a href="login.html"
+                                <a href=""
                                     ><i class="fas fa-sign-in-alt"></i> Login</a
                                 >
                             </li>

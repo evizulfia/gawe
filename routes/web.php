@@ -8,11 +8,13 @@ use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');
 Route::get('/terms', [TermsController::class, 'index'])->name('terms');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
 
 Route::get('/dashboard', [WebsiteController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 
@@ -44,3 +46,10 @@ Route::post('/admin/reset-password-submit', [AdminLoginController::class, 'reset
 
 Route::get('/admin/edit-profile', [AdminProfileController::class, 'index'])->name('admin_profile')->middleware('admin:admin');
 Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profile_submit'])->name('admin_profile_submit');
+
+use Illuminate\Support\Facades\DB;
+
+Route::get('/current-database', function () {
+    $databaseName = DB::connection()->getDatabaseName();
+    return 'Current database is: ' . $databaseName;
+});
