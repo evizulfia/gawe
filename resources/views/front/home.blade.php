@@ -69,18 +69,9 @@
                                                 <option value="">
                                                     {{ $home_page_data->job_category }}
                                                 </option>
-                                                <option value="">
-                                                    Accounting
-                                                </option>
-                                                <option value="">
-                                                    Customer Support
-                                                </option>
-                                                <option value="">
-                                                    Web Design
-                                                </option>
-                                                <option value="">
-                                                    Web Development
-                                                </option>
+                                                @foreach($job_categories as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -137,7 +128,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="all">
-                    <a href="categories.html" class="btn btn-primary"
+                    <a href="{{ route('job_categories') }}" class="btn btn-primary"
                         >See All Categories</a
                     >
                 </div>
