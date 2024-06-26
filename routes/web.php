@@ -60,3 +60,5 @@ Route::get('/current-database', function () {
     $databaseName = DB::connection()->getDatabaseName();
     return 'Current database is: ' . $databaseName;
 });
+
+
