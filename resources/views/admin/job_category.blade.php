@@ -4,7 +4,7 @@
 
 @section('button')
 <div>
-    <a href="{{ route('admin_job_category_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New</a>
+    <a href="" class="btn btn-primary"><i class="fas fa-plus"></i> Add New</a>
 </div>
 @endsection
 
