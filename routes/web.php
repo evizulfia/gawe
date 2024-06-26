@@ -50,6 +50,7 @@ Route::middleware('admin:admin')->group(function (){
     Route::get('/admin/home-page', [AdminHomePageController::class, 'index'])->name('admin_home_page');
     Route::get('/admin/edit-profile', [AdminProfileController::class, 'index'])->name('admin_profile');
     Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profile_submit'])->name('admin_profile_submit');
+    Route::post('/admin/home-page/update', [AdminHomePageController::class, 'update'])->name('admin_home_page_update');
 });
 
 
