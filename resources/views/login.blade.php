@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ $other_page_item->login_page_heading }}</h2>
+                <h2>Login</h2>
             </div>
         </div>
     </div>
