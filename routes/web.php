@@ -5,6 +5,11 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\BlogController;
+use App\Http\Controllers\Front\SignupController;
+use App\Http\Controllers\Front\ForgetPasswordController;
+use App\Http\Controllers\Front\JobListingController;
+use App\Http\Controllers\Front\CompanyListingController;
+
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -44,6 +49,20 @@ Route::post('/forget_password_submit', [WebsiteController::class, 'forget_passwo
 
 Route::get('/reset-password/{token}/{email}', [WebsiteController::class, 'reset_password'])->name('reset_password');
 Route::post('/reset_password_submit', [WebsiteController::class, 'reset_password_submit'])->name('reset_password_submit');
+Route::get('job-listing', [JobListingController::class, 'index'])->name('job_listing');
+Route::get('job-detail/{id}', [JobListingController::class, 'detail'])->name('job');
+Route::post('job-enquery/email', [JobListingController::class, 'send_email'])->name('job_enquery_send_email');
+
+Route::get('company-listing', [CompanyListingController::class, 'index'])->name('company_listing');
+Route::get('company-detail/{id}', [CompanyListingController::class, 'detail'])->name('company');
+Route::post('company-enquery/email', [CompanyListingController::class, 'send_email'])->name('company_enquery_send_email');
+Route::get('create-account', [SignupController::class, 'index'])->name('signup');
+
+/*Company */
+Route::get('forget-password/company', [ForgetPasswordController::class, 'company_forget_password'])->name('company_forget_password');
+Route::post('forget-password/company/submit', [ForgetPasswordController::class, 'company_forget_password_submit'])->name('company_forget_password_submit');
+Route::get('reset-password/company/{token}/{email}', [ForgetPasswordController::class, 'company_reset_password'])->name('company_reset_password');
+Route::post('reset-password/company/submit', [ForgetPasswordController::class, 'company_reset_password_submit'])->name('company_reset_password_submit');
 
 /* Admin */
 
