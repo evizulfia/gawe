@@ -12,6 +12,11 @@ use App\Http\Controllers\Front\CompanyListingController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\LoginController;
+use App\Http\Controllers\Front\PrivacyController;
+use App\Http\Controllers\Front\JobCategoryController;
+use App\Http\Controllers\Front\PostController;
+use App\Http\Controllers\Front\PricingController;
+use App\Http\Controllers\Front\SubscriberController;
 
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminHomePageController;
@@ -26,7 +31,6 @@ use App\Http\Controllers\Company\CompanyController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-// Route::get('/', [WebsiteController::class, 'index'])->name('home');
 Route::get('/terms', [TermsController::class, 'index'])->name('terms');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
@@ -34,33 +38,38 @@ Route::post('contact/submit', [ContactController::class, 'submit'])->name('conta
 Route::get('faq', [FaqController::class, 'index'])->name('faq');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('create-account', [SignupController::class, 'index'])->name('signup');
+Route::get('privacy-policy', [PrivacyController::class, 'index'])->name('privacy');
+Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
+
+
+Route::get('job-listing', [JobListingController::class, 'index'])->name('job_listing');
+Route::get('job-detail/{id}', [JobListingController::class, 'detail'])->name('job');
+Route::post('job-enquery/email', [JobListingController::class, 'send_email'])->name('job_enquery_send_email');
+Route::get('company-listing', [CompanyListingController::class, 'index'])->name('company_listing');
+Route::get('company-detail/{id}', [CompanyListingController::class, 'detail'])->name('company');
+Route::post('company-enquery/email', [CompanyListingController::class, 'send_email'])->name('company_enquery_send_email');
+Route::get('create-account', [SignupController::class, 'index'])->name('signup');
+
+Route::post('subscriber/send-email', [SubscriberController::class, 'send_email'])->name('subscriber_send_email');
+Route::get('subscriber/verify/{email}/{token}', [SubscriberController::class, 'verify'])->name('subscriber_email_verify');
 
 
 Route::get('/dashboard', [WebsiteController::class, 'dashboard'])->name('dashboard')->middleware('auth');
-
 Route::get('/login', [WebsiteController::class, 'login'])->name('login');
 Route::post('/login-submit', [WebsiteController::class, 'login_submit'])->name('login_submit');
-
 Route::get('/logout', [WebsiteController::class, 'logout'])->name('logout');
-
 Route::get('/registration', [WebsiteController::class, 'registration'])->name('registration');
 Route::post('/registration_submit', [WebsiteController::class, 'registration_submit'])->name('registration_submit');
-
 Route::get('/registration/verify/{token}/{email}', [WebsiteController::class, 'registration_verify']);
 
+
+/*Temporary */
 Route::get('/forget-password', [WebsiteController::class, 'forget_password'])->name('forget_password');
 Route::post('/forget_password_submit', [WebsiteController::class, 'forget_password_submit'])->name('forget_password_submit');
 
 Route::get('/reset-password/{token}/{email}', [WebsiteController::class, 'reset_password'])->name('reset_password');
 Route::post('/reset_password_submit', [WebsiteController::class, 'reset_password_submit'])->name('reset_password_submit');
-Route::get('job-listing', [JobListingController::class, 'index'])->name('job_listing');
-Route::get('job-detail/{id}', [JobListingController::class, 'detail'])->name('job');
-Route::post('job-enquery/email', [JobListingController::class, 'send_email'])->name('job_enquery_send_email');
 
-Route::get('company-listing', [CompanyListingController::class, 'index'])->name('company_listing');
-Route::get('company-detail/{id}', [CompanyListingController::class, 'detail'])->name('company');
-Route::post('company-enquery/email', [CompanyListingController::class, 'send_email'])->name('company_enquery_send_email');
-Route::get('create-account', [SignupController::class, 'index'])->name('signup');
 
 /*Company */
 Route::get('forget-password/company', [ForgetPasswordController::class, 'company_forget_password'])->name('company_forget_password');
