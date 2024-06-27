@@ -66,7 +66,7 @@ class CompanyListingController extends Controller
     {
         $order_data = Order::where('company_id', $id)->where('currently_active', 1)->first();
 
-        if (!$order_data || date('Y-m-d') > $order_data->expire_date) {
+        if (!$order_data || date('YY-mm-dd') > $order_data->expire_date) {
             return redirect()->route('home');
         }
 
