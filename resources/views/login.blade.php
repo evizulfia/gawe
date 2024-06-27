@@ -63,7 +63,7 @@
                             aria-labelledby="pills-home-tab"
                             tabindex="0"
                         >
-                            <form action="{{ route('candidate_login_submit') }}" method="post">
+                            <form action="" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="" class="form-label">Username</label>
@@ -77,7 +77,7 @@
                                 <button type="submit" class="btn btn-primary bg-website">
                                     Login
                                 </button>
-                                <a href="{{ route('candidate_forget_password') }}" class="primary-color">Forget Password?</a>
+                                <a href="" class="primary-color">Forget Password?</a>
                             </div>
                             </form>
                         </div>
@@ -88,7 +88,7 @@
                             aria-labelledby="pills-profile-tab"
                             tabindex="0"
                         >
-                            <form action="{{ route('company_login_submit') }}" method="post">
+                            <form action="" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="" class="form-label">Username</label>
@@ -102,7 +102,7 @@
                                 <button type="submit" class="btn btn-primary bg-website">
                                     Login
                                 </button>
-                                <a href="{{ route('company_forget_password') }}" class="primary-color">
+                                <a href="" class="primary-color">
                                     Forget Password?
                                 </a>
                             </div>
@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <a href="{{ route('signup') }}" class="primary-color"
+                        <a href="" class="primary-color"
                             >Don't have an account? Create Account</a
                         >
                     </div>
