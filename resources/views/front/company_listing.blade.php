@@ -1,7 +1,7 @@
 @extends('front.layout.app')
 
-@section('seo_title'){{ $other_page_item->company_listing_page_title }}@endsection
-@section('seo_meta_description'){{ $other_page_item->company_listing_page_meta_description }}@endsection
+@section('seo_title'){{ optional($other_page_item)->company_listing_page_title }}@endsection
+@section('seo_meta_description'){{ optional($other_page_item)->company_listing_page_meta_description }}@endsection
 
 @section('main_content')
 <div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_company_listing) }}')">
@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ $other_page_item->company_listing_page_heading }}</h2>
+                <h2>{{ optional($other_page_item)->company_listing_page_heading }}</h2>
             </div>
         </div>
     </div>
@@ -85,7 +85,6 @@
                     </div>
                     @endif
 
-
                 </div>
             </div>
             <div class="col-md-9">
@@ -103,7 +102,7 @@
                             @else
                             @foreach($companies as $item)
                             @php
-                            $order_data = \App\Models\Order::where('company_id',$item->id)->where('currently_active',1)->first();
+                            $order_data = \App\Models\Order::where('company_id', $item->id)->where('currently_active', 1)->first();
                             @endphp
                             @if($order_data && date('Y-m-d') > $order_data->expire_date)
                                 @continue
@@ -114,18 +113,18 @@
                                         <img src="{{ asset('uploads/'.$item->logo) }}" alt="">
                                     </div>
                                     <div class="text">
-                                        <h3><a href="{{ route('company',$item->id) }}">{{ $item->company_name }}</a></h3>
+                                        <h3><a href="{{ route('company', $item->id) }}">{{ $item->company_name }}</a></h3>
                                         <div class="detail-1 d-flex justify-content-start">
                                             <div class="category">
-                                                {{ $item->rCompanyIndustry->name }}
+                                                {{ optional($item->rCompanyIndustry)->name ?? 'N/A' }}
                                             </div>
                                             <div class="location">
-                                                {{ $item->rCompanyLocation->name }}
+                                                {{ optional($item->rCompanyLocation)->name ?? 'N/A' }}
                                             </div>
                                         </div>
                                         <div class="detail-2">
                                             @php
-                                            $new_str = substr($item->description,0,220).' ...';
+                                            $new_str = substr($item->description, 0, 220).' ...';
                                             @endphp
                                             {!! $new_str !!}
                                         </div>
@@ -140,8 +139,6 @@
                                 {{ $companies->appends($_GET)->links() }}
                             </div>
                             @endif
-
-
                         </div>
                     </div>
                 </div>
@@ -149,5 +146,4 @@
         </div>
     </div>
 </div>
-
 @endsection
