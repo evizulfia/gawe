@@ -104,10 +104,10 @@
                             @foreach($companies as $item)
                             @php
                             $order_data = \App\Models\Order::where('company_id',$item->id)->where('currently_active',1)->first();
-                            if(date('Y-m-d') > $order_data->expire_date) {
-                                continue;
-                            }
                             @endphp
+                            @if($order_data && date('Y-m-d') > $order_data->expire_date)
+                                @continue
+                            @endif
                             <div class="col-md-12">
                                 <div class="item d-flex justify-content-start">
                                     <div class="logo">
