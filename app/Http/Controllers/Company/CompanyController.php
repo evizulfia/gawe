@@ -29,8 +29,8 @@ use App\Models\CandidateAward;
 use App\Models\CandidateResume;
 use App\Mail\WebsiteMail;
 use Illuminate\Validation\Rule;
-use Auth;
-use Hash;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 
