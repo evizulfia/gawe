@@ -23,7 +23,9 @@
                 <div class="card mb-5 mb-lg-0">
                     <div class="card-body">
                         <h2 class="card-title">{{ $item->package_name }}</h2>
-                        <h3 class="card-price">${{ $item->package_price }}</h3>
+                        <h3 class="card-price">
+                            Rp{{ number_format($item->package_price, 0, ',', '.') }}
+                        </h3>
                         <h4 class="card-day">({{ $item->package_display_time }})</h4>
                         <hr />
                         <ul class="fa-ul">
