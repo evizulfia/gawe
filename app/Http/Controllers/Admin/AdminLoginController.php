@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Mail\Websitemail;
-use Hash;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 
 class AdminLoginController extends Controller
 {
@@ -42,7 +43,7 @@ class AdminLoginController extends Controller
         $message = 'Please click on the following link: <br>';
         $message .= '<a href="'.$reset_link.'">Click here</a>';
 
-        \Mail::to($request->email)->send(new Websitemail($subject,$message));
+        Mail::to($request->email)->send(new Websitemail($subject,$message));
 
         return redirect()->route('admin_login')->with('success','Please check your email and follow the steps there');
 
