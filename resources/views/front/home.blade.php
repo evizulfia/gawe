@@ -162,7 +162,7 @@
             @php
             $this_company_id = $item->rCompany->id;
             $order_data = \App\Models\Order::where('company_id',$this_company_id)->where('currently_active',1)->first();
-            if(date('Y-m-d') > $order_data->expire_date) {
+            if($order_data && date('Y-m-d') > $order_data->expire_date) {
                 continue;
             }
             $i++;
