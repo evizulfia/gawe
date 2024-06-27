@@ -9,6 +9,9 @@ use App\Http\Controllers\Front\SignupController;
 use App\Http\Controllers\Front\ForgetPasswordController;
 use App\Http\Controllers\Front\JobListingController;
 use App\Http\Controllers\Front\CompanyListingController;
+use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\FaqController;
+use App\Http\Controllers\Front\LoginController;
 
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminHomePageController;
@@ -16,9 +19,8 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminOtherPageController;
-use App\Http\Controllers\Front\ContactController;
-use App\Http\Controllers\Front\FaqController;
-use App\Http\Controllers\Front\LoginController;
+
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -29,7 +31,7 @@ Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit');
 Route::get('faq', [FaqController::class, 'index'])->name('faq');
 Route::get('login', [LoginController::class, 'index'])->name('login');
-
+Route::get('create-account', [SignupController::class, 'index'])->name('signup');
 
 
 Route::get('/dashboard', [WebsiteController::class, 'dashboard'])->name('dashboard')->middleware('auth');
