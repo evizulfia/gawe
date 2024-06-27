@@ -1,7 +1,7 @@
 @extends('front.layout.app')
 
-{{-- @section('seo_title'){{ $other_page_item->login_page_title }}@endsection
-@section('seo_meta_description'){{ $other_page_item->login_page_meta_description }}@endsection --}}
+@section('seo_title'){{ $other_page_item->login_page_title }}@endsection
+@section('seo_meta_description'){{ $other_page_item->login_page_meta_description }}@endsection
 
 @section('main_content')
 <div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_login) }}')">
@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Login</h2>
+                <h2>{{ $other_page_item->login_page_heading }}</h2>
             </div>
         </div>
     </div>
@@ -77,7 +77,7 @@
                                 <button type="submit" class="btn btn-primary bg-website">
                                     Login
                                 </button>
-                                <a href="" class="primary-color">Forget Password?</a>
+                                <a href="{{ route('candidate_forget_password') }}" class="primary-color">Forget Password?</a>
                             </div>
                             </form>
                         </div>
@@ -88,7 +88,7 @@
                             aria-labelledby="pills-profile-tab"
                             tabindex="0"
                         >
-                            <form action="" method="post">
+                            <form action="{{ route('company_login_submit') }}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="" class="form-label">Username</label>
@@ -102,7 +102,7 @@
                                 <button type="submit" class="btn btn-primary bg-website">
                                     Login
                                 </button>
-                                <a href="" class="primary-color">
+                                <a href="{{ route('company_forget_password') }}" class="primary-color">
                                     Forget Password?
                                 </a>
                             </div>
@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <a href="" class="primary-color"
+                        <a href="{{ route('signup') }}" class="primary-color"
                             >Don't have an account? Create Account</a
                         >
                     </div>
