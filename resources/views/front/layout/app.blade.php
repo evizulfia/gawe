@@ -39,7 +39,7 @@
                                 >
                             </li>
                             <li class="menu">
-                                <a href="signup.html"
+                                <a href="{{ route('signup') }}"
                                     ><i class="fas fa-user"></i> Sign Up</a
                                 >
                             </li>
