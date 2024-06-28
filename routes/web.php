@@ -136,6 +136,11 @@ Route::middleware(['company:company'])->group(function() {
 
 });
 
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('company_login_submit', [LoginController::class, 'company_login_submit'])->name('company_login_submit');
+Route::post('candidate_login_submit', [LoginController::class, 'candidate_login_submit'])->name('candidate_login_submit');
+Route::get('/company/logout', [LoginController::class, 'company_logout'])->name('company_logout');
+Route::get('/candidate/logout', [LoginController::class, 'candidate_logout'])->name('candidate_logout');
 
 /* Candidate */
 // Route::post('candidate_login_submit', [LoginController::class, 'candidate_login_submit'])->name('candidate_login_submit');
