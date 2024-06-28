@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PageOtherItem;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -31,23 +30,23 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        $credential = [
+        $credentials = [
             'username' => $request->username,
             'password' => $request->password,
             'status' => 1
         ];
 
-        if(Auth::guard('company')->attempt($credential)) {
-            return redirect()->route('company_dashboard');
+        if(Auth::guard('company')->attempt($credentials)) {
+            return redirect()->route('company_dashboard')->with('success', 'You have logged in successfully.');
         } else {
-            return redirect()->route('login')->with('error', 'Information is not correct!');
+            return redirect()->route('login')->with('error', 'Incorrect credentials or account not activated.');
         }
     }
 
     public function company_logout()
     {
         Auth::guard('company')->logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'You have logged out successfully.');
     }
 
     public function candidate_login_submit(Request $request)
@@ -57,24 +56,22 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        $credential = [
+        $credentials = [
             'username' => $request->username,
             'password' => $request->password,
             'status' => 1
         ];
 
-        if(Auth::guard('candidate')->attempt($credential)) {
-            return redirect()->route('candidate_dashboard');
+        if(Auth::guard('candidate')->attempt($credentials)) {
+            return redirect()->route('candidate_dashboard')->with('success', 'You have logged in successfully.');
         } else {
-            return redirect()->route('login')->with('error', 'Information is not correct!');
+            return redirect()->route('login')->with('error', 'Incorrect credentials or account not activated.');
         }
     }
 
     public function candidate_logout()
     {
         Auth::guard('candidate')->logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'You have logged out successfully.');
     }
-
-
 }
