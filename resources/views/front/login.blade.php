@@ -102,9 +102,9 @@
                                 <button type="submit" class="btn btn-primary bg-website">
                                     Login
                                 </button>
-                                <a href="{{ route('company_forget_password') }}" class="primary-color">
+                                {{-- <a href="{{ route('company_forget_password') }}" class="primary-color">
                                     Forget Password?
-                                </a>
+                                </a> --}}
                             </div>
                             </form>
                         </div>
