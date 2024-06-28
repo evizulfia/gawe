@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\PageOtherItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use App\Models\PageOtherItem;
 
 class LoginController extends Controller
 {
@@ -62,9 +62,13 @@ class LoginController extends Controller
             'status' => 1
         ];
 
+        Log::info('Attempting login for candidate:', $credentials);
+
         if(Auth::guard('candidate')->attempt($credentials)) {
+            Log::info('Candidate login successful');
             return redirect()->route('candidate_dashboard')->with('success', 'You have logged in successfully.');
         } else {
+            Log::info('Candidate login failed');
             return redirect()->route('login')->with('error', 'Incorrect credentials or account not activated.');
         }
     }
