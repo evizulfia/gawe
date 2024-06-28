@@ -141,6 +141,9 @@ Route::post('company_login_submit', [LoginController::class, 'company_login_subm
 Route::post('candidate_login_submit', [LoginController::class, 'candidate_login_submit'])->name('candidate_login_submit');
 Route::get('/company/logout', [LoginController::class, 'company_logout'])->name('company_logout');
 Route::get('/candidate/logout', [LoginController::class, 'candidate_logout'])->name('candidate_logout');
+Route::get('create-account', [SignupController::class, 'index'])->name('signup');
+Route::post('company_signup_submit', [SignupController::class, 'company_signup_submit'])->name('company_signup_submit');
+Route::post('candidate_signup_submit', [SignupController::class, 'candidate_signup_submit'])->name('candidate_signup_submit');
 
 /* Candidate */
 // Route::post('candidate_login_submit', [LoginController::class, 'candidate_login_submit'])->name('candidate_login_submit');
