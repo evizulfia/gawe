@@ -28,7 +28,7 @@
                             @if($current_plan == null)
                             <span class="text-danger">No plan is available</span>
                             @else
-                            <h4>${{ $current_plan->rPackage->package_price }}</h4>
+                            <h4>Rp {{ $current_plan->rPackage->package_price }}</h4>
                             <p>{{ $current_plan->rPackage->package_name }}</p>
                             @endif
                         </div>
@@ -44,7 +44,7 @@
                             <td class="w-200">
                                 <select name="package_id" class="form-control select2">
                                     @foreach($packages as $item)
-                                    <option value="{{ $item->id }}">{{ $item->package_name }} (Rp{{ number_format($item->price_in_idr, 0, ',', '.') }})</option>
+                                    <option value="{{ $item->id }}">{{ $item->package_name }} (Rp {{ $item->package_price }})</option>
                                     @endforeach
                                 </select>
                             </td>
