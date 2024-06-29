@@ -55,7 +55,7 @@
                             </td>
                         </tr>
                         </form>
-                        <tr>
+                        {{-- <tr>
                             <form action="{{ route('company_stripe') }}" method="post">
                             @csrf
                             <td>
@@ -71,7 +71,7 @@
                                 </button>
                             </td>
                             </form>
-                        </tr>
+                        </tr> --}}
                     </table>
                 </div>
                 
