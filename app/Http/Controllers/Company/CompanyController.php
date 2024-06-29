@@ -263,7 +263,7 @@ class CompanyController extends Controller
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
-        $provider->setCurrency('IDR');
+        // $provider->setCurrency('IDR');
 
         $response = $provider->createOrder([
             "intent" => "CAPTURE",
@@ -274,7 +274,7 @@ class CompanyController extends Controller
             "purchase_units" => [
                 [
                     "amount" => [
-                        "currency_code" => "IDR",
+                        "currency_code" => "USD",
                         "value" => $single_package_data->package_price
                     ]
                 ]
