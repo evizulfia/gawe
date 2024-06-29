@@ -31,6 +31,7 @@ use App\Mail\WebsiteMail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 
@@ -262,6 +263,7 @@ class CompanyController extends Controller
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
+        $provider->setCurrency('IDR');
 
         $response = $provider->createOrder([
             "intent" => "CAPTURE",
@@ -272,7 +274,7 @@ class CompanyController extends Controller
             "purchase_units" => [
                 [
                     "amount" => [
-                        "currency_code" => "USD",
+                        "currency_code" => "IDR",
                         "value" => $single_package_data->package_price
                     ]
                 ]
@@ -574,7 +576,7 @@ class CompanyController extends Controller
             $message = 'Please check the detail: <br>';
             $message .= '<a href="'.$detail_link.'">Click here to see the detail</a>';
 
-            \Mail::to($candidate_email)->send(new Websitemail($subject,$message));
+            Mail::to($candidate_email)->send(new Websitemail($subject,$message));
         }
 
         return redirect()->back()->with('success', 'Status is changed successfully!');
