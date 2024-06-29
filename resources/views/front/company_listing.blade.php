@@ -29,42 +29,54 @@
 
                     <div class="widget">
                         <h2>Company Industry</h2>
-                        <select name="industry" class="form-control select2">
-                            <option value="">Company Industry</option>
-                            @foreach($company_industries as $item)
-                            <option value="{{ $item->id }}" @if($form_industry == $item->id) selected @endif>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="industry" class="form-control select2">
+                                <option value="">Company Industry</option>
+                                @foreach($company_industries as $item)
+                                <option value="{{ $item->id }}" @if($form_industry == $item->id) selected @endif>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="widget">
                         <h2>Company Location</h2>
-                        <select name="location" class="form-control select2">
-                            <option value="">Company Location</option>
-                            @foreach($company_locations as $item)
-                            <option value="{{ $item->id }}" @if($form_location == $item->id) selected @endif>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="location" class="form-control select2">
+                                <option value="">Company Location</option>
+                                @foreach($company_locations as $item)
+                                <option value="{{ $item->id }}" @if($form_location == $item->id) selected @endif>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="widget">
                         <h2>Company Size</h2>
-                        <select name="size" class="form-control select2">
-                            <option value="">Company Size</option>
-                            @foreach($company_sizes as $item)
-                            <option value="{{ $item->id }}" @if($form_size == $item->id) selected @endif>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="size" class="form-control select2">
+                                <option value="">Company Size</option>
+                                @foreach($company_sizes as $item)
+                                <option value="{{ $item->id }}" @if($form_size == $item->id) selected @endif>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="widget">
                         <h2>Founded On</h2>
-                        <select name="founded" class="form-control select2">
-                            <option value="">Founded On</option>
-                            @for($i=1900;$i<=date('Y');$i++)
-                                <option value="{{ $i }}" @if($form_founded == $i) selected @endif>{{ $i }}</option>
-                            @endfor
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="founded" class="form-control select2">
+                                <option value="">Founded On</option>
+                                @for($i=1900;$i<=date('Y');$i++)
+                                    <option value="{{ $i }}" @if($form_founded == $i) selected @endif>{{ $i }}</option>
+                                @endfor
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="filter-button">
@@ -147,3 +159,21 @@
     </div>
 </div>
 @endsection
+
+<style>
+    .custom-dropdown {
+        position: relative;
+    }
+    .custom-dropdown select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    .custom-dropdown i {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+</style>
