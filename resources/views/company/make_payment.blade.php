@@ -44,7 +44,7 @@
                             <td class="w-200">
                                 <select name="package_id" class="form-control select2">
                                     @foreach($packages as $item)
-                                    <option value="{{ $item->id }}">{{ $item->package_name }} (${{ $item->package_price }})</option>
+                                    <option value="{{ $item->id }}">{{ $item->package_name }} (Rp{{ number_format($item->price_in_idr, 0, ',', '.') }})</option>
                                     @endforeach
                                 </select>
                             </td>
