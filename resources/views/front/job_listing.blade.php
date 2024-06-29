@@ -20,7 +20,6 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="job-filter">
-                    
                     <form action="{{ url('job-listing') }}" method="get">
                     <div class="widget">
                         <h2>Job Title</h2>
@@ -29,62 +28,80 @@
 
                     <div class="widget">
                         <h2>Job Category</h2>
-                        <select name="category" class="form-control select2">
-                            <option value="">Job Category</option>
-                            @foreach($job_categories as $item)
-                            <option value="{{ $item->id }}" @if($form_category == $item->id) selected @endif>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="category" class="form-control select2">
+                                <option value="">Job Category</option>
+                                @foreach($job_categories as $item)
+                                <option value="{{ $item->id }}" @if($form_category == $item->id) selected @endif>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="widget">
                         <h2>Job Location</h2>
-                        <select name="location" class="form-control select2">
-                            <option value="">Job Location</option>
-                            @foreach($job_locations as $item)
-                            <option value="{{ $item->id }}" @if($form_location == $item->id) selected @endif>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="location" class="form-control select2">
+                                <option value="">Job Location</option>
+                                @foreach($job_locations as $item)
+                                <option value="{{ $item->id }}" @if($form_location == $item->id) selected @endif>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="widget">
                         <h2>Job Type</h2>
-                        <select name="type" class="form-control select2">
-                            <option value="">Job Type</option>
-                            @foreach($job_types as $item)
-                            <option value="{{ $item->id }}" @if($form_type == $item->id) selected @endif>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="type" class="form-control select2">
+                                <option value="">Job Type</option>
+                                @foreach($job_types as $item)
+                                <option value="{{ $item->id }}" @if($form_type == $item->id) selected @endif>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="widget">
                         <h2>Job Experience</h2>
-                        <select name="experience" class="form-control select2">
-                            <option value="">Job Experience</option>
-                            @foreach($job_experiences as $item)
-                            <option value="{{ $item->id }}" @if($form_experience == $item->id) selected @endif>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="experience" class="form-control select2">
+                                <option value="">Job Experience</option>
+                                @foreach($job_experiences as $item)
+                                <option value="{{ $item->id }}" @if($form_experience == $item->id) selected @endif>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="widget">
                         <h2>Job Gender</h2>
-                        <select name="gender" class="form-control select2">
-                            <option value="">Job Gender</option>
-                            @foreach($job_genders as $item)
-                            <option value="{{ $item->id }}" @if($form_gender == $item->id) selected @endif>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="gender" class="form-control select2">
+                                <option value="">Job Gender</option>
+                                @foreach($job_genders as $item)
+                                <option value="{{ $item->id }}" @if($form_gender == $item->id) selected @endif>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="widget">
                         <h2>Job Salary Range</h2>
-                        <select name="salary_range" class="form-control select2">
-                            <option value="">Job Salary Range</option>
-                            @foreach($job_salary_ranges as $item)
-                            <option value="{{ $item->id }}" @if($form_salary_range == $item->id) selected @endif>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="custom-dropdown">
+                            <select name="salary_range" class="form-control select2">
+                                <option value="">Job Salary Range</option>
+                                @foreach($job_salary_ranges as $item)
+                                <option value="{{ $item->id }}" @if($form_salary_range == $item->id) selected @endif>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
 
                     <div class="filter-button">
@@ -92,7 +109,6 @@
                             <i class="fas fa-search"></i> Filter
                         </button>
                     </div>
-
                     </form>
 
                     @if($advertisement_data->job_listing_ad_status == 'Show')
@@ -104,8 +120,6 @@
                         @endif
                     </div>
                     @endif
-
-
                 </div>
             </div>
             <div class="col-md-9">
@@ -198,8 +212,6 @@
                                 {{ $jobs->appends($_GET)->links() }}
                             </div>
                             @endif
-
-
                         </div>
                     </div>
                 </div>
@@ -209,3 +221,21 @@
 </div>
 
 @endsection
+
+<style>
+    .custom-dropdown {
+        position: relative;
+    }
+    .custom-dropdown select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    .custom-dropdown i {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+</style>
