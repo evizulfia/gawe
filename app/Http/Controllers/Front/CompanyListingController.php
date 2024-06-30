@@ -64,11 +64,11 @@ class CompanyListingController extends Controller
 
     public function detail($id)
     {
-        $order_data = Order::where('company_id', $id)->where('currently_active', 1)->first();
+        // $order_data = Order::where('company_id', $id)->where('currently_active', 1)->first();
 
-        if (!$order_data || date('YY-mm-dd') > $order_data->expire_date) {
-            return redirect()->route('home');
-        }
+        // if (!$order_data || date('YY-mm-dd') > $order_data->expire_date) {
+        //     return redirect()->route('home');
+        // }
 
         $company_single = Company::withCount('rJob')->with('rCompanyIndustry', 'rCompanyLocation', 'rCompanySize')->where('id', $id)->first();
 

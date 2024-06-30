@@ -31,7 +31,9 @@ use App\Mail\WebsiteMail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use GuzzleHttp\Client;
 
 
 class CompanyController extends Controller
@@ -248,17 +250,34 @@ class CompanyController extends Controller
     }
 
 
+    private function convertToUSD($amountInIDR)
+    {
+        $client = new Client();
+        $response = $client->request('GET', 'http://data.fixer.io/api/latest', [
+            'query' => [
+                'access_key' => env('FIXER_API_KEY'),
+                'symbols' => 'USD,IDR'
+            ]
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+        $idrToUsdRate = $data['rates']['USD'] / $data['rates']['IDR'];
+
+        return $amountInIDR * $idrToUsdRate;
+    }
+
     public function make_payment()
     {
-        $current_plan = Order::with('rPackage')->where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
+        $current_plan = Order::with('rPackage')->where('company_id', Auth::guard('company')->user()->id)->where('currently_active', 1)->first();
         $packages = Package::get();        
-        return view('company.make_payment', compact('current_plan','packages'));
+        return view('company.make_payment', compact('current_plan', 'packages'));
     }
 
     public function paypal(Request $request)
     {
-        $single_package_data = Package::where('id',$request->package_id)->first();
-        
+        $single_package_data = Package::where('id', $request->package_id)->first();
+        $amountInUSD = $this->convertToUSD($single_package_data->package_price);
+
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
@@ -273,7 +292,7 @@ class CompanyController extends Controller
                 [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => $single_package_data->package_price
+                        "value" => number_format($amountInUSD, 2, '.', '') // konversi nilai ke USD dengan 2 desimal
                     ]
                 ]
             ]
@@ -284,7 +303,7 @@ class CompanyController extends Controller
                 if($link['rel'] === 'approve') {
 
                     session()->put('package_id', $single_package_data->id);
-                    session()->put('package_price', $single_package_data->package_price);
+                    session()->put('package_price', number_format($amountInUSD, 2, '.', '')); // simpan harga dalam USD
                     session()->put('package_days', $single_package_data->package_days);
 
                     return redirect()->away($link['href']);
@@ -311,7 +330,7 @@ class CompanyController extends Controller
             $obj->company_id = Auth::guard()->user()->id;
             $obj->package_id = session()->get('package_id');
             $obj->order_no = time();
-            $obj->paid_amount = session()->get('package_price');
+            $obj->paid_amount = session()->get('package_price'); // jumlah dalam USD
             $obj->payment_method = 'PayPal';
             $obj->start_date = date('Y-m-d');
             $days = session()->get('package_days');
@@ -334,66 +353,65 @@ class CompanyController extends Controller
         return redirect()->route('company_make_payment')->with('error', 'Payment is cancelled!');
     }
 
+    // public function stripe(Request $request)
+    // {
+    //     $single_package_data = Package::where('id',$request->package_id)->first();
 
-    public function stripe(Request $request)
-    {
-        $single_package_data = Package::where('id',$request->package_id)->first();
+    //     \Stripe\Stripe::setApiKey(config('stripe.stripe_sk'));
+    //     $response = \Stripe\Checkout\Session::create([
+    //         'line_items' => [
+    //             [
+    //                 'price_data' => [
+    //                     'currency' => 'usd',
+    //                     'product_data' => [
+    //                         'name' => $single_package_data->package_name
+    //                     ],
+    //                     'unit_amount' => $single_package_data->package_price * 100,
+    //                 ],
+    //                 'quantity' => 1,
+    //             ],
+    //         ],
+    //         'mode' => 'payment',
+    //         'success_url' => route('company_stripe_success'),
+    //         'cancel_url' => route('company_stripe_cancel'),
+    //     ]);
 
-        \Stripe\Stripe::setApiKey(config('stripe.stripe_sk'));
-        $response = \Stripe\Checkout\Session::create([
-            'line_items' => [
-                [
-                    'price_data' => [
-                        'currency' => 'usd',
-                        'product_data' => [
-                            'name' => $single_package_data->package_name
-                        ],
-                        'unit_amount' => $single_package_data->package_price * 100,
-                    ],
-                    'quantity' => 1,
-                ],
-            ],
-            'mode' => 'payment',
-            'success_url' => route('company_stripe_success'),
-            'cancel_url' => route('company_stripe_cancel'),
-        ]);
+    //     session()->put('package_id', $single_package_data->id);
+    //     session()->put('package_price', $single_package_data->package_price);
+    //     session()->put('package_days', $single_package_data->package_days);
 
-        session()->put('package_id', $single_package_data->id);
-        session()->put('package_price', $single_package_data->package_price);
-        session()->put('package_days', $single_package_data->package_days);
-
-        return redirect()->away($response->url);
+    //     return redirect()->away($response->url);
         
-    }
+    // }
 
-    public function stripe_success()
-    {
-        $data['currently_active'] = 0;
-        Order::where('company_id', Auth::guard()->user()->id)->update($data);
+    // public function stripe_success()
+    // {
+    //     $data['currently_active'] = 0;
+    //     Order::where('company_id', Auth::guard()->user()->id)->update($data);
 
-        $obj = new Order();
-        $obj->company_id = Auth::guard()->user()->id;
-        $obj->package_id = session()->get('package_id');
-        $obj->order_no = time();
-        $obj->paid_amount = session()->get('package_price');
-        $obj->payment_method = 'Stripe';
-        $obj->start_date = date('Y-m-d');
-        $days = session()->get('package_days');
-        $obj->expire_date = date('Y-m-d', strtotime("+$days days"));
-        $obj->currently_active = 1;
-        $obj->save();
+    //     $obj = new Order();
+    //     $obj->company_id = Auth::guard()->user()->id;
+    //     $obj->package_id = session()->get('package_id');
+    //     $obj->order_no = time();
+    //     $obj->paid_amount = session()->get('package_price');
+    //     $obj->payment_method = 'Stripe';
+    //     $obj->start_date = date('Y-m-d');
+    //     $days = session()->get('package_days');
+    //     $obj->expire_date = date('Y-m-d', strtotime("+$days days"));
+    //     $obj->currently_active = 1;
+    //     $obj->save();
 
-        session()->forget('package_id');
-        session()->forget('package_price');
-        session()->forget('package_days');
+    //     session()->forget('package_id');
+    //     session()->forget('package_price');
+    //     session()->forget('package_days');
 
-        return redirect()->route('company_make_payment')->with('success', 'Payment is successful!');
-    }
+    //     return redirect()->route('company_make_payment')->with('success', 'Payment is successful!');
+    // }
 
-    public function stripe_cancel()
-    {
-        return redirect()->route('company_make_payment')->with('error', 'Payment is cancelled!');
-    }
+    // public function stripe_cancel()
+    // {
+    //     return redirect()->route('company_make_payment')->with('error', 'Payment is cancelled!');
+    // }
 
     public function jobs_create()
     {
@@ -574,7 +592,7 @@ class CompanyController extends Controller
             $message = 'Please check the detail: <br>';
             $message .= '<a href="'.$detail_link.'">Click here to see the detail</a>';
 
-            \Mail::to($candidate_email)->send(new Websitemail($subject,$message));
+            Mail::to($candidate_email)->send(new Websitemail($subject,$message));
         }
 
         return redirect()->back()->with('success', 'Status is changed successfully!');

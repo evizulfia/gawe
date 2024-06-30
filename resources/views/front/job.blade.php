@@ -100,7 +100,9 @@
                 @if(date('Y-m-d') <= $job_single->deadline)
                 <div class="left-item">
                     <div class="apply">
-                        <a href="apply.html" class="btn btn-primary">Apply Now</a>
+                        @if(date('Y-m-d') <= $job_single->deadline)
+                        <a href="{{ route('candidate_apply',$job_single->id) }}" class="btn btn-primary">Apply Now</a>
+                        @endif
                     </div>
                 </div>
                 @endif
