@@ -8,6 +8,7 @@
 </div>
 @endsection
 
+ <!-- Tampilan Halaman utama -->
 @section('main_content')
 <div class="section-body">
     <div class="row">
@@ -24,12 +25,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                                 <!-- Untuk menampilkan setiap item dalam koleksi -->
                                 @foreach($job_genders as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td class="pt_10 pb_10">
-                                        <a href="{{ route('admin_job_gender_edit',$item->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="{{ route('admin_job_gender_edit',$item->id) }}" class="btn btn-primary btn-sm">Edit</a>  <!-- Mengarah ke rute dengan id item sebagai parameternya -->
                                         <a href="{{ route('admin_job_gender_delete',$item->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">Delete</a>
                                     </td>
                                 </tr>
